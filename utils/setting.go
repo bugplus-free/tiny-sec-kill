@@ -6,6 +6,11 @@ import (
 )
 
 var (
+	AppMode  string
+	HttpPort string
+	JwtKey   string
+
+
 	DbIp       string
 	DbPort     string
 	DbUser     string
@@ -24,8 +29,14 @@ func init() {
 	if err != nil {
 		fmt.Println("配置文件读取错误，请检查文件路径", err)
 	}
+	LoadServer(file)
 	LoadDb(file)
 	LoadCache(file)
+}
+func LoadServer(file *ini.File) {
+	AppMode = file.Section("server").Key("AppMode").MustString("debug")
+	HttpPort = file.Section("server").Key("HttpPort").MustString(":3001")
+	JwtKey = file.Section("server").Key("JwtKey").MustString("89js82js72")
 }
 
 func LoadDb(file *ini.File) {
