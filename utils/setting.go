@@ -11,6 +11,12 @@ var (
 	DbUser     string
 	DbPassword string
 	DbName     string
+
+	RdsIp       string
+	RdsPort     string
+	RdsNo       string
+	RdsUser     string
+	RdsPassword string
 )
 
 func init() {
@@ -19,6 +25,7 @@ func init() {
 		fmt.Println("配置文件读取错误，请检查文件路径", err)
 	}
 	LoadDb(file)
+	LoadCache(file)
 }
 
 func LoadDb(file *ini.File) {
@@ -27,4 +34,12 @@ func LoadDb(file *ini.File) {
 	DbUser = file.Section("mysql").Key("DbUser").MustString("root")
 	DbPassword = file.Section("mysql").Key("DbPassWord").MustString("root")
 	DbName = file.Section("mysql").Key("DbName").MustString("ginblogm")
+}
+
+func LoadCache(file *ini.File) {
+	RdsIp = file.Section("redis").Key("RdsIp").String()
+	RdsPort = file.Section("redis").Key("RdsPort").String()
+	RdsNo = file.Section("redis").Key("RdsNo").String()
+	RdsUser = file.Section("redis").Key("RdsUser").String()
+	RdsPassword = file.Section("redis").Key("RdsPassword").String()
 }
