@@ -5,15 +5,20 @@
 
 #### 软件架构
 软件架构说明
+
 路由分组 Gin
+
 文档 swag
+
 数据库 gorm-mysql redis 
+
 中间件 jwt log
 
 
 #### 使用说明
 
 配置文件 config/config.ini
+
 基础文档 http://ip:port/api/v1/swagger/index.html
 
 
