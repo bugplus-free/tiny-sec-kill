@@ -40,7 +40,7 @@ func InitDB() {
 		fmt.Println("成功链接mysql")
 	}
 	db.Set("gorm:table_option", "ENGINE=InnoDB")
-	_ = db.AutoMigrate()
+	_ = db.AutoMigrate(&User{},&Good{},&Order{})
 	sqlDB, _ := db.DB()
 	// SetMaxIdleCons 设置连接池中的最大闲置连接数。
 	sqlDB.SetMaxIdleConns(10)

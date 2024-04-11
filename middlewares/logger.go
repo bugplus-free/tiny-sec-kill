@@ -41,7 +41,7 @@ func Logger() gin.HandlerFunc {
 	}
 	Hook := lfshook.NewHook(writerMap, &logrus.TextFormatter{
 		TimestampFormat: "2006-01-02 15:04:05",
-	})//制作一个钩子
+	}) //制作一个钩子
 	logger.AddHook(Hook)
 	return func(c *gin.Context) {
 		startTime := time.Now()
