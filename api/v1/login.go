@@ -7,7 +7,10 @@ import (
 	"tiny-sec-kill/models"
 	"github.com/gin-gonic/gin"
 )
-
+// @Summary 登录
+// @Accept application/json
+// @Produce json
+// @Router /api/v1/login [post]
 func Login(c *gin.Context) {
 	var data models.User
 	var token string

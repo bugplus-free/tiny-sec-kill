@@ -31,6 +31,7 @@ func CheckUser(name string) (code int) {
 
 // 新建用户
 func CreateUser(data *User) int {
+	fmt.Println(data.Role)
 	//data.Password = ScryptPw(data.Password)
 	err := db.Create(&data).Error
 	if err != nil {
@@ -45,6 +46,8 @@ func GetUsers(pageSize int, pageNum int, token string) ([]User, int64) {
 	if user.Role == 0 {
 		var users []User
 		var total int64
+		fmt.Println(pageSize)
+		fmt.Println(pageNum)
 		err = db.Limit(pageSize).Offset((pageNum - 1) * pageSize).Find(&users).Count(&total).Error
 		if err != nil && err != gorm.ErrRecordNotFound {
 			fmt.Println(err)
