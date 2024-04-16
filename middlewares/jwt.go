@@ -32,7 +32,7 @@ func SetToken(username string, password string) (string, int) {
 			Issuer:    "tiny-sec-kill",
 		},
 	}
-	requestClaim := jwt.NewWithClaims(jwt.SigningMethodES256, SetClaims)
+	requestClaim := jwt.NewWithClaims(jwt.SigningMethodHS256, SetClaims)
 	token, err := requestClaim.SignedString(JwtKey)
 	if err != nil {
 		return "", errMsg.ERROR
